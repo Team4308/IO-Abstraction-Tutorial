@@ -14,5 +14,5 @@ annotationProcessor 'org.littletonrobotics.akit:akit-autolog:26.0.2'
 
 Also ensure that you have AdvantageKit & Phoenix 6 dependencies installed on your machine.
 
-If u have made it this far how about you try making a simple subsystem yourself using the same core principles outlines in this project,
+If u have made it this far how about you try making a simple subsystem yourself using the same core principles outlined in this project,
 after all the only way to learn is by doing, not by reading this README...
