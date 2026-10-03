@@ -3,7 +3,15 @@
 ## overview:
 breaks up subsystems into 4 main components, the interface, the hardware implementation, the simulation implementation, and the actual subsystem.
 
-example code above does it for a simple motor movement subsystem (just create a PowerLoop with a TalonFX motor for this code to work)
+### Subsystem Structure
+
+```text
+Subsystem/
+├── Subsystem.java
+├── SubsystemIO.java
+├── SubsystemIOHardware.java
+└── SubsystemIOSim.java
+example code above does it for a simple motor movement subsystem (just create a Power loop a.k.a. testbench with a TalonFX motor for this code to work)
 
 important for when you are making your own:
 for `@AutoLog`, make sure to add this line to the dependencies section in `build.gradle`:
