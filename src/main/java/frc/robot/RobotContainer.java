@@ -2,17 +2,31 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.motor.Motor;
+import frc.robot.subsystems.motor.MotorIO;
 import frc.robot.subsystems.motor.MotorIOKraken;
+import frc.robot.subsystems.motor.MotorIOSim;
 
 public class RobotContainer {
 
     private final CommandXboxController controller =
             new CommandXboxController(0);
 
-    private final Motor m_motor =
-            new Motor(new MotorIOKraken());
+    private final Motor m_motor;
 
     public RobotContainer() {
+        switch (Constants.currentMode) {
+            case REAL:
+                m_motor = new Motor(new MotorIOKraken());
+                break;
+            case SIM:
+                m_motor = new Motor(new MotorIOSim());
+                break;
+            case REPLAY:
+            default:
+                m_motor = new Motor(new MotorIO() {});
+                break;
+        }
+
         configureBindings();
     }
 
