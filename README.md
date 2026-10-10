@@ -28,6 +28,14 @@ annotationProcessor 'org.littletonrobotics.akit:akit-autolog:26.0.2'
 
 Also ensure that you have the AdvantageKit and Phoenix 6 dependencies installed on your machine.
 
+### Running the Simulation
+
+1. Select **Simulate Robot Code**, then choose **Sim GUI**.
+2. Make sure your controller is connected and configured correctly in the Sim GUI. (dont forgor to select teleop boi)
+3. Open AdvantageScope and select **Connect to Simulator**.
+4. Choose **Default: Connect to NT4**.
+5. Everything should now be configured! Try moving the joystick and watch the motor respond in AdvantageScope.
+
 If you've made it this far, how about you try making a simple subsystem yourself using the same core principles outlined in this project?
 
 After all, the only way to learn is by doing, not by reading this README...
