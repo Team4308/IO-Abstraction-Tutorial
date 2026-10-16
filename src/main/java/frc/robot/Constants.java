@@ -30,11 +30,8 @@ public final class Constants {
    * Current operating mode of the robot.
    * Auto-detects real hardware vs simulation, or can be explicitly set to Mode.REPLAY for log replay.
    */
-  public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : Mode.SIM;
-
-  public static Mode getMode() {
-    return currentMode;
-  }
+  //public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : Mode.SIM;
+  public static final Mode currentMode = Mode.REPLAY;
 
   public static class MotorConstants {
     public static final int kMotorId = 1 ;

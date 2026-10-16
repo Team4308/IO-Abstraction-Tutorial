@@ -26,7 +26,7 @@ public class RobotContainer {
                 m_motor = new Motor(new MotorIO() {});
                 break;
         }
-
+        
         configureBindings();
     }
 
