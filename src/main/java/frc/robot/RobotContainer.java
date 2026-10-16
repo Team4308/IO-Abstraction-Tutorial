@@ -30,19 +30,44 @@ public class RobotContainer {
         configureBindings();
     }
 
-    private void configureBindings() {
+    
+private boolean estopped = false;
 
-        m_motor.setDefaultCommand(
-            m_motor.run(() -> {
-                double joystickValue = controller.getRightX();
-                double voltage = joystickValue * 12.0;
+private void configureBindings() {
 
-                m_motor.runVolts(voltage);
-            })
-        );
+    m_motor.setDefaultCommand(
+        m_motor.run(() -> {
+            if (estopped) {
+                m_motor.runVolts(0.0);
+                return;
+            }
 
-        controller.b().onTrue(
-            m_motor.runOnce(() -> m_motor.estop())
-        ); 
-    }
+            double joystickValue =
+            edu.wpi.first.math.MathUtil.applyDeadband(
+                controller.getHID().getRawAxis(3), 0.08
+            );
+            org.littletonrobotics.junction.Logger.recordOutput(
+            "Debug/RawAxis3", joystickValue
+            );
+
+        double voltage = joystickValue * 12.0;
+        m_motor.runVolts(voltage);
+        })
+    );
+
+    // B: Latch the emergency stop.
+    controller.b().onTrue(
+        m_motor.runOnce(() -> {
+            estopped = true;
+            m_motor.estop();
+        })
+    );
+
+    // A: Reset the emergency stop.
+    controller.a().onTrue(
+        m_motor.runOnce(() -> {
+            estopped = false;
+        })
+    );
+}
 }
